@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624204854) do
+ActiveRecord::Schema.define(version: 20170624213910) do
 
-  create_table "stuffed_animals", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.integer "user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "owners", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+  end
+
+  create_table "toys", force: :cascade do |t|
+    t.string "name"
+    t.string "variety"
+    t.integer "user_id"
   end
 
 end
