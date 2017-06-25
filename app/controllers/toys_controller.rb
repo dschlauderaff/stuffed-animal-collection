@@ -28,4 +28,8 @@ class ToysController < ApplicationController
     end
   end
 
+  get '/toys/:id/edit' do
+    
+  end
+
 end
