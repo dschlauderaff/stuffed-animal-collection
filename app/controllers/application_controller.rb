@@ -12,4 +12,34 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+
+  get '/success' do
+    erb :'users/success'
+  end
+
+  get '/failure' do
+    erb :'users/failure'
+  end
+
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
+    end
+
+    # helper to avoid requiring a user to log in after creating account
+    def user_log_in(user)
+      # binding.pry
+      if user && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        redirect '/success'
+
+      else
+        redirect '/failure'
+      end
+    end
+  end
 end
