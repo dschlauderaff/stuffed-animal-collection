@@ -2,7 +2,8 @@ class OwnersController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect '/'  #TODO change this redirect to owner's index
+      # binding.pry
+      redirect "/owners/#{current_user.id}"
     else
       erb :'users/create_owners'
     end
@@ -22,7 +23,8 @@ class OwnersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect '/' #TODO change this redirect to owner's index
+
+      redirect "/owners/#{current_user.id}"
     end
   end
 

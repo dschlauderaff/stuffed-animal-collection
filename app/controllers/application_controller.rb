@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:user_id])
+      Owner.find(session[:user_id])
     end
 
     # helper to avoid requiring a user to log in after creating account
@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
       # binding.pry
       if user && user.authenticate(params[:owner][:password])
         session[:user_id] = user.id
-        redirect '/success' #TODO change this redirect to owner's index
+        redirect "/owners/#{user.id}"
 
       else
         redirect '/failure'
