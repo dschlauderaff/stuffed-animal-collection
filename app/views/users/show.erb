@@ -1,0 +1,4 @@
+<h1><%= "Toy Collection: #{@owner.name}" %></h1>
+<% @owner.toys.each do |toy| %>
+  <h3><%= "#{toy.name} - #{toy.variety}" %></h3>
+<% end %>
