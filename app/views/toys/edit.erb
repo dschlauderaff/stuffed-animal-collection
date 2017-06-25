@@ -1,6 +1,7 @@
 <h1>Edit <%= "#{@toy.name}" %></h1>
 
 <form action='/toys/<%= @toy.id %>' method='POST'>
+  <input type="hidden" name="_method" value="PATCH">
   <label for="toy_name"><h2>Name: </h2></label>
   <input type="text" name="toy[name]" id="toy_name" value="<%= @toy.name %>"/>
   <br />

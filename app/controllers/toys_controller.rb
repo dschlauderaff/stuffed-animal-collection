@@ -51,4 +51,14 @@ class ToysController < ApplicationController
     end
   end
 
+  patch '/toys/:id' do
+    # binding.pry
+    @toy = Toy.find(params[:id])
+    @toy.assign_attributes(params[:toy])
+    if @toy.save
+      redirect "/toys/#{@toy.id}"
+    else
+      redirect "/toys/#{@toy.id}/edit" #TODO implement rack flash message here - something went wrong
+    end
+  end
 end
