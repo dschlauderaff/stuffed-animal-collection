@@ -1,5 +1,14 @@
 class ToysController < ApplicationController
 
+  get '/toys' do
+    if logged_in?
+      @toys = Toy.all
+      erb :'toys/index'
+    else
+      redirect '/login'
+    end
+  end
+
   get '/toys/new' do
     if logged_in?
       erb :'toys/create_toys'
@@ -29,7 +38,16 @@ class ToysController < ApplicationController
   end
 
   get '/toys/:id/edit' do
-    
+    if logged_in?
+      @toy = Toy.find(params[:id])
+      if @toy.owner_id == current_user.id
+        erb :'toys/edit'
+      else
+        redirect '/toys'
+      end
+    else
+      redirect '/login'
+    end
   end
 
 end
