@@ -33,9 +33,9 @@ class ApplicationController < Sinatra::Base
     # helper to avoid requiring a user to log in after creating account
     def user_log_in(user)
       # binding.pry
-      if user && user.authenticate(params[:user][:password])
+      if user && user.authenticate(params[:owner][:password])
         session[:user_id] = user.id
-        redirect '/success'
+        redirect '/success' #TODO change this redirect to owner's index
 
       else
         redirect '/failure'

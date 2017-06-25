@@ -8,5 +8,14 @@ class OwnersController < ApplicationController
     end
   end
 
-  post
+  post '/signup' do
+    owner = Owner.new(params[:owner])
+    # binding.pry
+    if owner.save
+      user_log_in(owner)
+    else
+      redirect '/signup'
+    end
+  end
+
 end
