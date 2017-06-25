@@ -1,0 +1,19 @@
+<h1>Edit <%= "#{@toy.name}" %></h1>
+
+<form action='/toys/<%= @toy.id %>' method='POST'>
+  <label for="toy_name"><h2>Name: </h2></label>
+  <input type="text" name="toy[name]" id="toy_name" value="<%= @toy.name %>"/>
+  <br />
+
+  <label for="toy_variety"><h2>Type: </h2></label>
+  <input type="text" name="toy[variety]" id="toy_variety" value="<%= @toy.variety %>"/>
+  <br />
+
+  <h2>Owner</h2>
+  <% @owners.each do |owner| %>
+    <input type="radio" name="toy[owner_id]" value="<%= owner.id %>" <%= 'checked' if @toy.owner_id == owner.id %>><%= owner.name %></input>
+    <% end %>
+  <br />
+
+  <input type="submit" value="Edit Toy" />
+</form>

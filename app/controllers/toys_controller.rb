@@ -40,6 +40,7 @@ class ToysController < ApplicationController
   get '/toys/:id/edit' do
     if logged_in?
       @toy = Toy.find(params[:id])
+      @owners = Owner.all
       if @toy.owner_id == current_user.id
         erb :'toys/edit'
       else
