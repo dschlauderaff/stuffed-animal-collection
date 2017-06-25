@@ -1,6 +1,12 @@
 class OwnersController < ApplicationController
 
   get '/signup' do
-    erb :'users/create_owners'
+    if logged_in?
+      redirect '/'  #TODO change this redirect to owner's index
+    else
+      erb :'users/create_owners'
+    end
   end
+
+  post
 end
