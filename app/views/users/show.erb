@@ -1,8 +1,8 @@
 <h1><%= "Toy Collection: #{@owner.name}" %></h1>
 <% if !@owner.toys.empty? %>
   <% @owner.toys.each do |toy| %>
-    <h3><%= "#{toy.name} - #{toy.variety}" %></h3>
+    <a href="/toys/<%= toy.id %>/edit"><h3><%= "#{toy.name} - #{toy.variety}" %></h3></a>
   <% end %>
-<% else %>
-  <h3><a href="/toys/new">Click here to start adding toys.</a></h3>
 <% end %>
+<h3><a href="/toys/new">Click here to add new toys.</a></h3>
+<a href="/toys">See All the Toys!</a>
