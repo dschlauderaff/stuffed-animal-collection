@@ -61,4 +61,18 @@ class ToysController < ApplicationController
       redirect "/toys/#{@toy.id}/edit" #TODO implement rack flash message here - something went wrong
     end
   end
+
+  delete '/toys/:id/delete' do
+    if logged_in?
+      @toy = Toy.find(params[:id])
+      if @toy.owner_id == current_user.id
+        @toy.delete
+        redirect '/toys'
+      else
+        redirect '/toys'
+      end
+    else
+      redirect '/login'
+    end
+  end
 end
