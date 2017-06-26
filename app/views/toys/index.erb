@@ -4,7 +4,7 @@
 <% if !@toys.empty? %>
   <% @toys.each do |toy| %>
   <li>
-    <%= "#{toy.name} - #{toy.variety}" %>
+    <a href="/toys/<%= toy.id %>"><%= "#{toy.name} - #{toy.variety}" %></a>
   </li>
   <% end %>
 <% else %>
