@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Stuffed Animal Collection</title>
+  <!-- Discussed in "The HTML <head> element", below -->
 </head>
-  <body>
+
+<body>
+  <header>
+    <h1><a href="/">Toy Collection Tracker</a></h1>
+    <nav>
+      <ul>
+        <li><a href="/owners/<%= current_user.id %>">YOUR TOYS</a></a></li>
+        <li><a href="/toys/new">ADD A NEW TOY</a></li>
+
+        <li><a href="/owners">OWNER LIST</a></li>
+        <li><a href="/toys">ALL THE TOYS!</a></li>
+        <li><a href="/logout">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
     <%= yield %>
+  </main>
 
-
-  </body>
+  <footer>
+    <p>FOOTER TEXT</p>
+  </footer>
+</body>
 </html>
