@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>The Great Big List of Toys</h1>
 <h2>Welcome, <%= current_user.name %></h2>
 

@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>Create a toy</h1>
 <form action="/toys" method="POST">
   <label for="name">Toy name: </label>

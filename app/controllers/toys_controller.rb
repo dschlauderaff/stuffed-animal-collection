@@ -5,6 +5,7 @@ class ToysController < ApplicationController
       @toys = Toy.all
       erb :'toys/index'
     else
+      flash[:message] = "Please login to complete that action"
       redirect '/login'
     end
   end
@@ -13,6 +14,7 @@ class ToysController < ApplicationController
     if logged_in?
       erb :'toys/create_toys'
     else
+      flash[:message] = "Please login to complete that action"
       redirect '/login'
     end
   end
@@ -23,7 +25,9 @@ class ToysController < ApplicationController
     if toy.save
       redirect "/owners/#{current_user.id}"
     else
-      redirect '/failure' #TODO do something better with this
+      flash[:message] = "Unable to save toy. Please make sure all fields are completed."
+      # binding.pry
+      redirect '/toys/new'
     end
   end
 
@@ -33,6 +37,7 @@ class ToysController < ApplicationController
       # binding.pry
       erb :'toys/show'
     else
+      flash[:message] = "Please login to complete that action"
       redirect '/login'
     end
   end
@@ -44,9 +49,11 @@ class ToysController < ApplicationController
       if @toy.owner_id == current_user.id
         erb :'toys/edit'
       else
-        redirect '/toys' #TODO rack error message doesn't belong to you
+        flash[:message] = "Only the owner can make changes to the selected toy"
+        redirect '/toys'
       end
     else
+      flash[:message] = "Please login to complete that action"
       redirect '/login'
     end
   end
@@ -58,7 +65,8 @@ class ToysController < ApplicationController
     if @toy.save
       redirect "/toys/#{@toy.id}"
     else
-      redirect "/toys/#{@toy.id}/edit" #TODO implement rack flash message here - something went wrong
+      flash[:message] = "Unable to make requested changes. Please make sure all fields are completed."
+      redirect "/toys/#{@toy.id}/edit"
     end
   end
 
@@ -69,9 +77,11 @@ class ToysController < ApplicationController
         @toy.delete
         redirect '/toys'
       else
-        redirect '/toys' #TODO rack error message doesn't belong to you
+        flash[:message] = "Only the owner can make changes to the selected toy"
+        redirect '/toys'
       end
     else
+      flash[:message] = "Please login to complete that action"
       redirect '/login'
     end
   end
