@@ -10,7 +10,9 @@
     <h1><a href="/">Toy Collection Tracker</a></h1>
     <nav>
       <ul>
-        <li><a href="/owners/<%= current_user.id %>">YOUR TOYS</a></a></li>
+        <% if logged_in? %>
+          <li><a href="/owners/<%= current_user.id %>">YOUR TOYS</a></a></li>
+        <% end %>
         <li><a href="/toys/new">ADD A NEW TOY</a></li>
 
         <li><a href="/owners">OWNER LIST</a></li>
