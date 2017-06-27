@@ -1,4 +1,7 @@
+require 'rack/flash'
 class OwnersController < ApplicationController
+  # binding.pry
+  use Rack::Flash
 
   get '/signup' do
     if logged_in?
@@ -15,7 +18,8 @@ class OwnersController < ApplicationController
     if owner.save
       user_log_in(owner)
     else
-      redirect '/signup'
+      flash[:message] = "Account could not be created. Please choose a unique username and a password."
+      redirect '/signup' 
     end
   end
 

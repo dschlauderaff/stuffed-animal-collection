@@ -44,7 +44,7 @@ class ToysController < ApplicationController
       if @toy.owner_id == current_user.id
         erb :'toys/edit'
       else
-        redirect '/toys'
+        redirect '/toys' #TODO rack error message doesn't belong to you
       end
     else
       redirect '/login'
@@ -69,7 +69,7 @@ class ToysController < ApplicationController
         @toy.delete
         redirect '/toys'
       else
-        redirect '/toys'
+        redirect '/toys' #TODO rack error message doesn't belong to you
       end
     else
       redirect '/login'
