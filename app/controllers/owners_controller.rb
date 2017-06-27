@@ -32,6 +32,11 @@ class OwnersController < ApplicationController
     end
   end
 
+  get '/owners' do
+    @owners = Owner.all
+    erb :'users/index'
+  end
+
   get '/owners/:id' do
 
     @owner = Owner.find_by(id: params[:id])
