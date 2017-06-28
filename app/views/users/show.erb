@@ -7,7 +7,3 @@
 <% if current_user.id == @owner.id %>
   <h3><a href="/toys/new">Click here to add new toys.</a></h3>
 <% end %>
-
-<a href="/owners/<%= current_user.id %>">Back to your list</a>
-<a href="/toys">See All the Toys!</a>
-<a href="/logout">Logout</a>
