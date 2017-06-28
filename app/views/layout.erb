@@ -11,14 +11,17 @@
     <h1><a href="/">Toy Collection Tracker</a></h1>
     <nav>
       <ul>
-        <% if logged_in? %>
-          <li><a href="/owners/<%= current_user.id %>">YOUR TOYS</a></a></li>
-        <% end %>
-        <li><a href="/toys/new">ADD A NEW TOY</a></li>
-
         <li><a href="/owners">OWNER LIST</a></li>
         <li><a href="/toys">ALL THE TOYS!</a></li>
-        <li><a href="/logout">LOGOUT</a></li>
+        <% if logged_in? %>
+          <li><a href="/owners/<%= current_user.id %>">YOUR TOYS</a></a></li>
+          <li><a href="/toys/new">ADD A NEW TOY</a></li>
+          <li><a href="/logout">LOGOUT</a></li>
+        <% else %>
+          <li><a href="/signup">CREATE ACCOUNT</a></li>
+          <li><a href="/login">SIGN IN</a></li>
+        <% end %>
+
       </ul>
     </nav>
   </header>
