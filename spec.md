@@ -14,7 +14,7 @@ Specs:
     models have validation macros to check for data in attributes
  [x]Display validation failures to user with error message (example form URL e.g. /posts/new)
     rack-flash displays messages when trying to access routes requiring login, or editing another owner's content
- []Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+ [x]Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 Confirm
 
  [x]You have a large number of small Git commits
