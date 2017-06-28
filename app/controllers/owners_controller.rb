@@ -32,6 +32,13 @@ class OwnersController < ApplicationController
     end
   end
 
+  post '/login' do
+    # binding.pry
+    owner = Owner.find_by(name: params[:owner][:name])
+
+    user_log_in(owner)
+  end
+
   get '/owners' do
     @owners = Owner.all
     erb :'users/index'
@@ -42,13 +49,6 @@ class OwnersController < ApplicationController
     @owner = Owner.find_by(id: params[:id])
     # binding.pry
     erb :'users/show'
-  end
-
-  post '/login' do
-    # binding.pry
-    owner = Owner.find_by(name: params[:owner][:name])
-
-    user_log_in(owner)
   end
 
   get '/logout' do
