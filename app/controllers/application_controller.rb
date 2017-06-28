@@ -40,7 +40,8 @@ class ApplicationController < Sinatra::Base
         redirect "/owners/#{user.id}"
 
       else
-        redirect '/failure'
+        flash[:message] = "Account could not be authenticated. Please enter username and password."
+        redirect '/login'
       end
     end
   end
