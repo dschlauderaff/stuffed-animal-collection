@@ -1,10 +1,10 @@
 <h2><%= "#{@toy.name}" %></h2>
 <ul>
   <li><%= "Toy type: #{@toy.variety}" %></li>
-  <li><%= "Belongs to: #{@toy.owner.name}" %></li>
+  <li><%= "Belongs to: #{@toy.user.name}" %></li>
 </ul>
 
-<% if @toy.owner_id == current_user.id %>
+<% if @toy.user_id == current_user.id %>
   <form method="get" action="/toys/<%= @toy.id %>/edit">
     <button type="submit" value="Edit Toy">Edit Toy</button>
   </form>

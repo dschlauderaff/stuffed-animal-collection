@@ -1,9 +1,9 @@
-<h1><%= "Toy Collection: #{@owner.name}" %></h1>
-<% if !@owner.toys.empty? %>
-  <% @owner.toys.each do |toy| %>
+<h1><%= "Toy Collection: #{@user.name}" %></h1>
+<% if !@user.toys.empty? %>
+  <% @user.toys.each do |toy| %>
     <a href="/toys/<%= toy.id %>"><h3><%= "#{toy.name} - #{toy.variety}" %></h3></a>
   <% end %>
 <% end %>
-<% if current_user.id == @owner.id %>
+<% if current_user.id == @user.id %>
   <h3><a href="/toys/new">Click here to add new toys.</a></h3>
 <% end %>

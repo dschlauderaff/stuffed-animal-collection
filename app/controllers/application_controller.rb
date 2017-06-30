@@ -25,19 +25,19 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      !!session[:user_id]
+      !!current_user
     end
 
+    #calls the user logged in the session hash to the @current_user variable, or finds that user if @current_user is nil and the session[:user_id] has a value
     def current_user
-      Owner.find(session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] 
     end
 
     # helper to avoid requiring a user to log in after creating account
     def user_log_in(user)
-      # binding.pry
-      if user && user.authenticate(params[:owner][:password])
+      if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        redirect "/owners/#{user.id}"
+        redirect "/users/#{user.id}"
 
       else
         flash[:message] = "Account could not be authenticated. Please enter username and password."

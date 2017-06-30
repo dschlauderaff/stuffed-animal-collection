@@ -1,9 +1,9 @@
 <h1>Owners</h1>
   <ul>
 
-  <% @owners.each do |owner| %>
+  <% @users.each do |user| %>
   <li>
-    <a href="/owners/<%= owner.id %>"><%= "#{owner.name}" %></a>
+    <a href="/users/<%= user.id %>"><%= "#{user.name}" %></a>
   </li>
   <% end %>
 </ul>

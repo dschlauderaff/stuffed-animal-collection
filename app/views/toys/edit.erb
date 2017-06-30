@@ -15,8 +15,8 @@
   <br />
 
   <h2>Owner:</h2>
-  <% @owners.each do |owner| %>
-    <input type="radio" name="toy[owner_id]" value="<%= owner.id %>" <%= 'checked' if @toy.owner_id == owner.id %>><%= owner.name %></input>
+  <% @users.each do |user| %>
+    <input type="radio" name="toy[user_id]" value="<%= user.id %>" <%= 'checked' if @toy.user_id == user.id %>><%= user.name %></input>
     <% end %>
   <br />
 

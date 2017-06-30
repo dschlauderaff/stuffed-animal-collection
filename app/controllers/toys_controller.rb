@@ -20,13 +20,11 @@ class ToysController < ApplicationController
   end
 
   post '/toys' do
-    # binding.pry
     toy = current_user.toys.build(params[:toy])
     if toy.save
-      redirect "/owners/#{current_user.id}"
+      redirect "/users/#{current_user.id}"
     else
       flash[:message] = "Unable to save toy. Please make sure all fields are completed."
-      # binding.pry
       redirect '/toys/new'
     end
   end
@@ -34,7 +32,6 @@ class ToysController < ApplicationController
   get '/toys/:id' do
     if logged_in?
       @toy = Toy.find(params[:id])
-      # binding.pry
       erb :'toys/show'
     else
       flash[:message] = "Please login to complete that action"
@@ -45,8 +42,8 @@ class ToysController < ApplicationController
   get '/toys/:id/edit' do
     if logged_in?
       @toy = Toy.find(params[:id])
-      @owners = Owner.all
-      if @toy.owner_id == current_user.id
+      @users = User.all
+      if @toy.user_id == current_user.id
         erb :'toys/edit'
       else
         flash[:message] = "Only the owner can make changes to the selected toy"
@@ -59,7 +56,6 @@ class ToysController < ApplicationController
   end
 
   patch '/toys/:id' do
-    # binding.pry
     @toy = Toy.find(params[:id])
     @toy.assign_attributes(params[:toy])
     if @toy.save
@@ -72,8 +68,8 @@ class ToysController < ApplicationController
 
   delete '/toys/:id/delete' do
     if logged_in?
-      @toy = Toy.find(params[:id])
-      if @toy.owner_id == current_user.id
+      @toy = Toy.find_by(id: params[:id])
+      if @toy.user_id == current_user.id
         @toy.delete
         redirect '/toys'
       else
