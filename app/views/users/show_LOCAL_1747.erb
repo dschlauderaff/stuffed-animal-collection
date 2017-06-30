@@ -1,9 +1,0 @@
-<h1><%= "Toy Collection: #{@user.name}" %></h1>
-<% if !@user.toys.empty? %>
-  <% @user.toys.each do |toy| %>
-    <a href="/toys/<%= toy.id %>"><h3><%= "#{toy.name} - #{toy.variety}" %></h3></a>
-  <% end %>
-<% end %>
-<% if current_user.id == @user.id %>
-  <h3><a href="/toys/new">Add new toys.</a></h3>
-<% end %>
