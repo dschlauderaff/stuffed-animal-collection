@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] 
     end
 
-    # helper to avoid requiring a user to log in after creating account
+    # helper for a user to log in after creating account
     def user_log_in(user)
       if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
